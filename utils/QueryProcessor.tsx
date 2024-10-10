@@ -31,6 +31,15 @@ export default function QueryProcessor(query: string): string {
   }
 
 
+  const complexMathMatch = query.match(/What is (\d+) plus (\d+) multiplied by (\d+)/);
+if (complexMathMatch) {
+  const x: number = parseInt(complexMathMatch[1]);
+  const y: number = parseInt(complexMathMatch[2]);
+  const z: number = parseInt(complexMathMatch[3]);
+  const result = x + (y * z); // Apply order of operations: multiplication before addition
+  return result.toString();
+}
+
   const sumMatch = query.match(/What is (\d+) plus (\d+) plus (\d+)/);
   if (sumMatch) {
     const x: number = parseInt(sumMatch[1]);
