@@ -44,5 +44,17 @@ export default function QueryProcessor(query: string): string {
     return (x * y).toString();
   }
 
+  const squareAndCubeMatch = query.match(/Which of the following numbers is both a square and a cube: (.+)\?/);
+if (squareAndCubeMatch) {
+  const numbers = squareAndCubeMatch[1].split(", ").map(Number);
+  const isSquareAndCube = (num: number) => {
+    const sqrt = Math.sqrt(num);
+    const cbrt = Math.cbrt(num);
+    return Number.isInteger(sqrt) && Number.isInteger(cbrt);
+  };
+  const result = numbers.find(isSquareAndCube);
+  return result ? result.toString() : "None";
+}
+
   return "";
 }
