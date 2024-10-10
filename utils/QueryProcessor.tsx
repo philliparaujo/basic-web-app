@@ -19,5 +19,23 @@ export default function QueryProcessor(query: string): string {
     );
   }
 
+  if (query.toLowerCase().includes('largest')) {
+    const elems = query.split(": ");
+    console.log(elems)
+    let nums = elems[1].split(", ");
+    nums[2] = nums[2].slice(0, -1); 
+    console.log(nums)
+    const numArray = nums.map(Number);
+    console.log(numArray)
+    return Math.max(...numArray).toString();
+  }
+
+  const addMatch = query.match(/What is (\d+) plus (\d+)/);
+  if (addMatch) {
+    const x: number = parseInt(addMatch[1]);
+    const y: number = parseInt(addMatch[2]);
+    return (x+y).toString();
+  }
+
   return "";
 }
