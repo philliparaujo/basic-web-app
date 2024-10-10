@@ -76,5 +76,13 @@ if (subtractMatch) {
   return (x - y).toString();
 }
 
+const sumMatch = query.match(/What is (\d+) plus (\d+) plus (\d+)/);
+if (sumMatch) {
+  const x: number = parseInt(sumMatch[1]);
+  const y: number = parseInt(sumMatch[2]);
+  const z: number = parseInt(sumMatch[3]);
+  return (x + y + z).toString();
+}
+
   return "";
 }
