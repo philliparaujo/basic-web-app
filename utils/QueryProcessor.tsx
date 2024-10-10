@@ -43,18 +43,17 @@ export default function QueryProcessor(query: string): string {
     const y: number = parseInt(multiplyMatch[2]);
     return (x * y).toString();
   }
-
   const squareAndCubeMatch = query.match(/Which of the following numbers is both a square and a cube: (.+)\?/);
-if (squareAndCubeMatch) {
-  const numbers = squareAndCubeMatch[1].split(", ").map(Number);
-  const isSquareAndCube = (num: number) => {
-    const sqrt = Math.sqrt(num);
-    const cbrt = Math.cbrt(num);
-    return Number.isInteger(sqrt) && Number.isInteger(cbrt);
-  };
-  const result = numbers.find(isSquareAndCube);
-  return result ? result.toString() : "None";
-}
+  if (squareAndCubeMatch) {
+    const numbers = squareAndCubeMatch[1].split(", ").map(Number);
+    const isSquareAndCube = (num: number) => {
+      const sqrt = Math.sqrt(num);
+      const cbrt = Math.cbrt(num);
+      return Number.isInteger(sqrt) && Number.isInteger(cbrt);
+    };
+    const results = numbers.filter(isSquareAndCube);
+    return results.length ? results.join(", ") : "None";
+  }
 
 const primeMatch = query.match(/Which of the following numbers are primes: (.+)\?/);
 if (primeMatch) {
