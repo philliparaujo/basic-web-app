@@ -40,6 +40,15 @@ if (complexMathMatch) {
   return result.toString();
 }
 
+const complexMathMatch2 = query.match(/What is (\d+) multiplied by (\d+) plus (\d+)/);
+if (complexMathMatch2) {
+  const x: number = parseInt(complexMathMatch2[1]);
+  const y: number = parseInt(complexMathMatch2[2]);
+  const z: number = parseInt(complexMathMatch2[3]);
+  const result = (x * y) + z; // Apply order of operations: multiplication before addition
+  return result.toString();
+}
+
   const sumMatch = query.match(/What is (\d+) plus (\d+) plus (\d+)/);
   if (sumMatch) {
     const x: number = parseInt(sumMatch[1]);
