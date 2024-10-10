@@ -30,6 +30,15 @@ export default function QueryProcessor(query: string): string {
     return Math.max(...numArray).toString();
   }
 
+
+  const sumMatch = query.match(/What is (\d+) plus (\d+) plus (\d+)/);
+  if (sumMatch) {
+    const x: number = parseInt(sumMatch[1]);
+    const y: number = parseInt(sumMatch[2]);
+    const z: number = parseInt(sumMatch[3]);
+    return (x + y + z).toString();
+  }
+
   const addMatch = query.match(/What is (\d+) plus (\d+)/);
   if (addMatch) {
     const x: number = parseInt(addMatch[1]);
@@ -76,13 +85,6 @@ if (subtractMatch) {
   return (x - y).toString();
 }
 
-const sumMatch = query.match(/What is (\d+) plus (\d+) plus (\d+)/);
-if (sumMatch) {
-  const x: number = parseInt(sumMatch[1]);
-  const y: number = parseInt(sumMatch[2]);
-  const z: number = parseInt(sumMatch[3]);
-  return (x + y + z).toString();
-}
 
 const powerMatch = query.match(/What is (\d+) to the power of (\d+)/);
 if (powerMatch) {
