@@ -70,5 +70,12 @@ if (primeMatch) {
   return primes.length ? primes.join(", ") : "None";
 }
 
+const subtractMatch = query.match(/What is (\d+) minus (\d+)/);
+if (subtractMatch) {
+  const x: number = parseInt(subtractMatch[1]);
+  const y: number = parseInt(subtractMatch[2]);
+  return (x - y).toString();
+}
+
   return "";
 }
