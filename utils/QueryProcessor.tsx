@@ -56,5 +56,19 @@ if (squareAndCubeMatch) {
   return result ? result.toString() : "None";
 }
 
+const primeMatch = query.match(/Which of the following numbers are primes: (.+)\?/);
+if (primeMatch) {
+  const numbers = primeMatch[1].split(", ").map(Number);
+  const isPrime = (num: number) => {
+    if (num <= 1) return false;
+    for (let i = 2; i <= Math.sqrt(num); i++) {
+      if (num % i === 0) return false;
+    }
+    return true;
+  };
+  const primes = numbers.filter(isPrime);
+  return primes.length ? primes.join(", ") : "None";
+}
+
   return "";
 }
