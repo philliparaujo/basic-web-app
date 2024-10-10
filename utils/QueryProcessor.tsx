@@ -84,5 +84,12 @@ if (sumMatch) {
   return (x + y + z).toString();
 }
 
+const powerMatch = query.match(/What is (\d+) to the power of (\d+)/);
+if (powerMatch) {
+  const base: number = parseInt(powerMatch[1]);
+  const exponent: number = parseInt(powerMatch[2]);
+  return Math.pow(base, exponent).toString();
+}
+
   return "";
 }
